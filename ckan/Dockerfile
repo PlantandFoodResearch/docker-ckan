@@ -1,8 +1,8 @@
 FROM openknowledge/ckan-base:2.8
 
-MAINTAINER Andrew Watkins <andrew.watkins@plantandfood.co.nz>
+LABEL maintainer="Andrew Watkins <andrew.watkins@plantandfood.co.nz>"
 
-# COPY over my default production.ini file.
+# COPY over our default production.ini file.
 ADD production.ini /srv/app/
 
 # Install any extensions needed by your CKAN instance
@@ -16,7 +16,7 @@ RUN pip install ckantoolkit && \
     pip install ckanapi && \
     pip install ckanext_scheming && \
     pip install ckanext-pdfview && \
-    pip install -e git+https://github.com/ckan/ckanext-pages.git#egg=ckanext-pages
+    pip install -e git+git@github.com:PlantandFoodResearch/ckanext-pfr.git#egg=ckanext-pfr
 
 # Install the extension(s) you wrote for your own project
 # RUN pip install -e git+https://github.com/your-org/ckanext-your-extension.git@v1.0.0#egg=ckanext-your-extension

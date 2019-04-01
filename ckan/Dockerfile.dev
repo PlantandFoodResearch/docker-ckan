@@ -1,6 +1,6 @@
 FROM openknowledge/ckan-dev:2.8
 
-MAINTAINER Andrew Watkins <andrew.watkins@plantandfood.co.nz>
+LABEL maintainer="Andrew Watkins <andrew.watkins@plantandfood.co.nz>"
 
 # COPY over my default production.ini file.
 ADD production.ini /srv/app/
@@ -14,9 +14,9 @@ ADD production.ini /srv/app/
 
 RUN pip install ckantoolkit && \
     pip install ckanapi && \
-    pip install ckanext_scheming && \
-    pip install ckanext-pdfview
+    pip install ckanext_scheming 
 
+# && \  pip install ckanext-pdfview
 # pip install -e git+https://github.com/ckan/ckanext-pages.git#egg=ckanext-pages && \
 
 
