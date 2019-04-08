@@ -12,13 +12,13 @@ ADD production.ini /srv/app/
 #    pip install -e git+https://github.com/ckan/ckanext-dcat.git@v0.0.6#egg=ckanext-dcat && \
 #    pip install -r https://raw.githubusercontent.com/ckan/ckanext-dcat/v0.0.6/requirements.txt
 
-# RUN apk add openldap-dev 
-RUN apk add py2-pyldap
+RUN apk add openldap-dev 
+# RUN apk add py2-pyldap
 
 RUN pip install ckantoolkit && \
     pip install ckanapi && \
     pip install ckanext_scheming && \
-    pip install -e git+https://github.com/NaturalHistoryMuseum/ckanext-ldap.git#egg=ckanext-ldap && \
+    pip install -e git+https://github.com/NaturalHistoryMuseum/ckanext-ldap.git@ckan-upgrade-2.8.0a#egg=ckanext-ldap && \
     pip install -r https://raw.githubusercontent.com/NaturalHistoryMuseum/ckanext-ldap/master/requirements.txt
 
 # && \  pip install ckanext-pdfview
