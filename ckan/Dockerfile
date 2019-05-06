@@ -1,6 +1,8 @@
 FROM openknowledge/ckan-base:2.8
 
 LABEL maintainer="Andrew Watkins <andrew.watkins@plantandfood.co.nz>"
+RUN apk add --no-cache openldap-dev ssmtp 
+ADD ssmtp.conf /etc/ssmtp
 
 # COPY over our default production.ini file.
 ADD production.ini /srv/app/
@@ -11,7 +13,6 @@ ADD production.ini /srv/app/
 #RUN pip install -e git+https://github.com/ckan/ckanext-pages.git#egg=ckanext-pages && \
 #    pip install -e git+https://github.com/ckan/ckanext-dcat.git@v0.0.6#egg=ckanext-dcat && \
 #    pip install -r https://raw.githubusercontent.com/ckan/ckanext-dcat/v0.0.6/requirements.txt
-RUN apk add --no-cache openldap-dev 
 
 RUN pip install ckantoolkit && \
     pip install ckanapi && \

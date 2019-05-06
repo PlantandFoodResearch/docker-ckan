@@ -7,11 +7,7 @@ services:
       dockerfile: Dockerfile.dev
     env_file:
       - .env
-    links:
-      - db
-      - solr
-      - redis
-      - datapusher
+    network_mode: "host"
     ports:
       - "0.0.0.0:${CKAN_PORT}:5000"
     volumes:
@@ -27,6 +23,7 @@ services:
 
   db:
     container_name: db
+    network_mode: "host"
     env_file:
       - .env
     build:
@@ -36,11 +33,13 @@ services:
 
   solr:
     container_name: solr
+    network_mode: "host"
     build:
       context: solr/
 
   redis:
     container_name: redis
+    network_mode: "host"
     image: redis:alpine
 
 volumes:

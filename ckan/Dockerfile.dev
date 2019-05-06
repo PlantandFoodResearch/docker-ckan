@@ -1,6 +1,8 @@
 FROM openknowledge/ckan-dev:2.8
 
 LABEL maintainer="Andrew Watkins <andrew.watkins@plantandfood.co.nz>"
+RUN apk add --no-cache openldap-dev ssmtp 
+ADD ssmtp.conf /etc/ssmtp
 
 # COPY over my default production.ini file.
 ADD production.ini /srv/app/
