@@ -1,2 +1,2 @@
-docker exec -it `docker ps | grep ckan-dev | awk '{print $12}'` /bin/bash -c "export TERM=xterm; exec bash"
-docker exec -it dockerckan_ckan-dev_1 /bin/bash -c "export TERM=xterm; exec bash"
+# docker exec -it `docker ps | grep ckan-dev | awk '{print $12}'` /bin/bash -c "export TERM=xterm; exec bash"
+docker exec -it docker-ckan_ckan-dev_1 /bin/bash -c "export TERM=xterm; exec bash"

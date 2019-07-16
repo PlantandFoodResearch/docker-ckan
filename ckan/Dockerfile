@@ -4,21 +4,25 @@ LABEL maintainer="Andrew Watkins <andrew.watkins@plantandfood.co.nz>"
 RUN apk add --no-cache openldap-dev ssmtp 
 ADD ssmtp.conf /etc/ssmtp
 
-# COPY over our default production.ini file.
-ADD production.ini /srv/app/
-
-# Install any extensions needed by your CKAN instance
-# (Make sure to add the plugins to CKAN__PLUGINS in the .env file)
-# For instance:
-#RUN pip install -e git+https://github.com/ckan/ckanext-pages.git#egg=ckanext-pages && \
-#    pip install -e git+https://github.com/ckan/ckanext-dcat.git@v0.0.6#egg=ckanext-dcat && \
-#    pip install -r https://raw.githubusercontent.com/ckan/ckanext-dcat/v0.0.6/requirements.txt
-
+# Install CKAN extensions
 RUN pip install ckantoolkit && \
     pip install ckanapi && \
     pip install ckanext_scheming && \
-    pip install ckanext-pdfview && \
-    pip install -e git+git@github.com:PlantandFoodResearch/ckanext-pfr.git#egg=ckanext-pfr
+    pip install ckanext-pdfview
+
+# install LDAP Extension
+RUN pip install -e git+https://github.com/NaturalHistoryMuseum/ckanext-ldap.git@ckan-upgrade-2.8.0a#egg=ckanext-ldap
+RUN pip install -r https://raw.githubusercontent.com/NaturalHistoryMuseum/ckanext-ldap/master/requirements.txt
+
+# install PFR language file for collections
+RUN pip install -e git+https://github.com/avowkind/ckanext-en-pfr.git#egg=ckanext-en-pfr
+RUN cp -r /srv/app/src/ckanext-en-pfr/en_PFR/* /srv/app/src/ckan/ckan/i18n/en_AU
+
+# install PFR extension for customisations
+RUN pip install -e git+git@github.com:PlantandFoodResearch/ckanext-pfr.git#egg=ckanext-pfr
+
+# COPY over our default production.ini file.
+ADD production.ini /srv/app/
 
 # Install the extension(s) you wrote for your own project
 # RUN pip install -e git+https://github.com/your-org/ckanext-your-extension.git@v1.0.0#egg=ckanext-your-extension
