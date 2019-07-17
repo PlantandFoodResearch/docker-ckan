@@ -1,0 +1,1 @@
+curl -X POST http://127.0.0.1:5000/api/3/action/datastore_create -H "Authorization: ad172741-fbb1-45e7-8631-8671a113f431" -d '{"resource": {"package_id": "{PACKAGE-ID}"}, "fields": [ {"id": "a"}, {"id": "b"} ], "records": [ { "a": 1, "b": "xyz"}, {"a": 2, "b": "zzz"} ]}'
