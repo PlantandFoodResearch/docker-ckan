@@ -9,6 +9,10 @@ RUN pip install ckantoolkit && \
     pip install ckanapi && \
     pip install ckanext_scheming && \
     pip install ckanext-pdfview
+# Set timezone
+ARG TZ
+RUN echo $TZ > /etc/timezone
+RUN cp /usr/share/zoneinfo/$TZ /etc/localtime
 
 # install LDAP Extension
 RUN pip install -e git+https://github.com/NaturalHistoryMuseum/ckanext-ldap.git@ckan-upgrade-2.8.0a#egg=ckanext-ldap
