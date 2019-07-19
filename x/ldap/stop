@@ -1,0 +1,2 @@
+docker stop ckan-openldap-container
+docker rm ckan-openldap-container

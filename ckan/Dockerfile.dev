@@ -4,23 +4,19 @@ LABEL maintainer="Andrew Watkins <andrew.watkins@plantandfood.co.nz>"
 RUN apk add --no-cache openldap-dev ssmtp 
 ADD ssmtp.conf /etc/ssmtp
 
-# debug tools for LDAP
-# RUN apk add openldap-dev 
-
 # Install CKAN extensions
 RUN pip install ckantoolkit && \
     pip install ckanapi && \
-    pip install ckanext_scheming
+    pip install ckanext_scheming && \
+    pip install ckanext-pdfview
 
+# install LDAP Extension
 RUN pip install -e git+https://github.com/NaturalHistoryMuseum/ckanext-ldap.git@ckan-upgrade-2.8.0a#egg=ckanext-ldap
 RUN pip install -r https://raw.githubusercontent.com/NaturalHistoryMuseum/ckanext-ldap/master/requirements.txt
 
 # install PFR language file for collections
 RUN pip install -e git+https://github.com/avowkind/ckanext-en-pfr.git#egg=ckanext-en-pfr
 RUN cp -r /srv/app/src/ckanext-en-pfr/en_PFR/* /srv/app/src/ckan/ckan/i18n/en_AU
-
-# install PDF Viewer
-RUN pip install ckanext-pdfview
 
 # COPY default production.ini file.
 ADD production.ini /srv/app/

@@ -1,0 +1,1 @@
+ldapsearch -v -x -H ldap://localhost -b dc=pfr,dc=org -D "cn=admin,dc=pfr,dc=org" -w metadatalives

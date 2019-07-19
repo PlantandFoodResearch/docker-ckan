@@ -11,15 +11,15 @@ RUN pip install ckantoolkit && \
     pip install ckanext-pdfview
 
 # install LDAP Extension
-RUN pip install -e git+https://github.com/NaturalHistoryMuseum/ckanext-ldap.git@ckan-upgrade-2.8.0a#egg=ckanext-ldap
-RUN pip install -r https://raw.githubusercontent.com/NaturalHistoryMuseum/ckanext-ldap/master/requirements.txt
+RUN pip install -e git+https://github.com/NaturalHistoryMuseum/ckanext-ldap.git@ckan-upgrade-2.8.0a#egg=ckanext-ldap && \
+    pip install -r https://raw.githubusercontent.com/NaturalHistoryMuseum/ckanext-ldap/master/requirements.txt
 
 # install PFR language file for collections
-RUN pip install -e git+https://github.com/avowkind/ckanext-en-pfr.git#egg=ckanext-en-pfr
-RUN cp -r /srv/app/src/ckanext-en-pfr/en_PFR/* /srv/app/src/ckan/ckan/i18n/en_AU
+RUN pip install -e git+https://github.com/avowkind/ckanext-en-pfr.git#egg=ckanext-en-pfr && \
+    cp -r /srv/app/src/ckanext-en-pfr/en_PFR/* /srv/app/src/ckan/ckan/i18n/en_AU
 
 # install PFR extension for customisations
-RUN pip install -e git+git@github.com:PlantandFoodResearch/ckanext-pfr.git#egg=ckanext-pfr
+RUN pip install -e git+https://github.com/PlantandFoodResearch/ckanext-pfr.git#egg=ckanext-pfr
 
 # COPY over our default production.ini file.
 ADD production.ini /srv/app/

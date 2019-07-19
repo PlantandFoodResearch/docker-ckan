@@ -14,10 +14,11 @@ services:
     volumes:
       - ./src:/srv/app/src_extensions:Z
       - ckan_storage:/var/lib/ckan
-    
 
   datapusher:
     container_name: datapusher
+    env_file:
+      - .env
     build:
       context: datapusher/
     ports:

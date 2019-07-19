@@ -1,0 +1,6 @@
+docker run \
+-p 389:389 -p 636:636 \
+--env LDAP_ORGANISATION="PFR" \
+--env LDAP_ADMIN_PASSWORD="metadatalives" \
+--name ckan-openldap-container \
+--detach osixia/openldap:1.2.4
