@@ -46,7 +46,7 @@ services:
     build:
       context: solr/
     volumes:
-      - solr_data:/opt/solr/server/solr/ckan/data/index
+      - solr_data:/opt/solr/server/solr/ckan/data/index:Z
 
   redis:
     container_name: redis
