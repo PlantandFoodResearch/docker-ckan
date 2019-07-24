@@ -18,7 +18,7 @@ services:
     ports:
       - "0.0.0.0:${CKAN_PORT}:5000"
     volumes:
-      - ckan_storage:/var/lib/ckan
+      - ckan_storage:/var/lib/ckan:Z
 
   datapusher:
     container_name: datapusher
