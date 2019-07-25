@@ -2,7 +2,7 @@ version: "3"
 
 services:
   ckan:
-    container_name: ckan
+    container_name: ckan.dev.pfr.co.nz
     build:
       context: ckan/
       dockerfile: Dockerfile
