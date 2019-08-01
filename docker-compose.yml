@@ -12,10 +12,6 @@ services:
       dockerfile: Dockerfile
       args:
         - TZ=${TZ}
-      depends_on:
-      - db
-      - solr
-      - redis
     env_file: .env-prod
     links:
       - db
