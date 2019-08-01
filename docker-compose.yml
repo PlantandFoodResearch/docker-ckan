@@ -4,9 +4,6 @@ services:
 
   ckan:
     container_name: ckan
-    deploy:
-      labels:
-        nz.co.pfr.description: "Plant and Food Research Data Conservatory"
     build:
       context: ckan/
       dockerfile: Dockerfile
