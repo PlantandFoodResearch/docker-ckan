@@ -1,7 +1,7 @@
 FROM openknowledge/ckan-base:2.8
 
 LABEL maintainer="Andrew Watkins <andrew.watkins@plantandfood.co.nz>"
-RUN apk add --no-cache openldap-dev ssmtp libldap2-dev libsasl2-dev libssl-dev
+RUN apk add --no-cache openldap-dev ssmtp
 ADD ssmtp.conf /etc/ssmtp
 
 # Install CKAN extensions
