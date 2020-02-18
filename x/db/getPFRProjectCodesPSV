@@ -1,0 +1,6 @@
+# TODO 
+## Change first col name to project_key not dim_project_key
+## escape any single " chars. e.g 8" tablets.
+
+docker run -it mcr.microsoft.com/mssql-tools /opt/mssql-tools/bin/sqlcmd -S pfrsql-dwtest.pfr.co.nz -U svc.pscodesearch -P dCBLJbNXE91RDK -d dwtest -s"|" -W -Q "SELECT * FROM [dwtest].[dbo].[dim_project] WHERE [wbs_element_id] not in ('Unknown','#')" >  projectcodes.psv
+ 

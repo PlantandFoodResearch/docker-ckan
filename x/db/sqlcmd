@@ -1,0 +1,3 @@
+docker pull mcr.microsoft.com/mssql-tools
+docker run -it mcr.microsoft.com/mssql-tools
+docker run -it mcr.microsoft.com/mssql-tools /opt/mssql-tools/bin/sqlcmd -S pfrsql-dwtest.pfr.co.nz -U svc.pscodesearch -P dCBLJbNXE91RDK -d dwtest -Q "SELECT * FROM [dwtest].[dbo].[dim_sap_mc_wbs_element]" > projectcodes.csv
