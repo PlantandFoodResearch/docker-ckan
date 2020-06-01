@@ -1,4 +1,4 @@
 pushd ckan-base
 docker build -t openknowledge/ckan-base:2.8 -f 2.8/Dockerfile .
 popd
-docker-compose -f docker-compose.yml build
+docker-compose -f docker-compose.yml build --force-rm  --no-cache  
