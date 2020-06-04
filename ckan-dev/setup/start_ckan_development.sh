@@ -59,7 +59,7 @@ paster --plugin=ckan config-tool $SRC_DIR/ckan/test-core.ini \
     "ckan.redis_url = $TEST_CKAN_REDIS_URL"
 
 # Run the prerun script to init CKAN and create the default admin user
-python prerun.py
+sudo -u ckan -EH python prerun.py
 
 # Run any startup scripts provided by images extending this one
 if [[ -d "/docker-entrypoint.d" ]]
@@ -78,4 +78,4 @@ fi
 supervisord --configuration /etc/supervisord.conf &
 
 # Start the development server with automatic reload
-paster serve --reload $CKAN_INI
+sudo -u ckan -EH paster serve --reload $CKAN_INI
